@@ -64,6 +64,11 @@ NEWSPIDER_MODULE = 'miner.spiders'
 #ITEM_PIPELINES = {
 #    'miner.pipelines.SomePipeline': 300,
 #}
+ITEM_PIPELINES = ['miner.pipelines.MongoDBPipeline', ]
+MONGODB_SERVER = "192.168.99.100"
+MONGODB_PORT = 32768
+MONGODB_DB = "keyboardlist"
+MONGODB_COLLECTION = "mechanicalkeyboards"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

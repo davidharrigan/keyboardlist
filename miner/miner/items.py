@@ -2,7 +2,8 @@
 import scrapy
 
 
-class KeyboardItem(scrapy.Item):
+class MechanicalKeyboardsItem(scrapy.Item):
+    price = scrapy.Field()
     model = scrapy.Field()
     size = scrapy.Field()
     manufacturer = scrapy.Field()
@@ -25,5 +26,7 @@ class KeyboardItem(scrapy.Item):
     weight = scrapy.Field()
     dimensions = scrapy.Field()
     interface = scrapy.Field()
+    stock = scrapy.Field()
     domain = scrapy.Field()
     url = scrapy.Field()
+    page = scrapy.Field()
