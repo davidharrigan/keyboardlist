@@ -1,0 +1,6 @@
+---
+- hosts: keyboardlist_dev
+  roles:
+  - core
+  - docker
+  - nginx

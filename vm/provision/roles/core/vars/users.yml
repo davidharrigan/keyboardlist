@@ -1,0 +1,11 @@
+---
+groups:
+  - admin
+  - deploy
+
+users:
+  - name: dharrigan
+    group: admin
+
+  - name: deploy
+    group: deploy

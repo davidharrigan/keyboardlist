@@ -1,0 +1,34 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "ubuntu/vivid64"
+  config.ssh.insert_key = false
+
+  config.vm.provider :virtualbox do |v|
+    v.name = "keyboardlist-dev"
+    v.memory = 1024
+    v.cpus = 1
+    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    v.customize ["modifyvm", :id, "--ioapic", "on"]
+  end
+
+  config.vm.hostname = "keyboardlist-dev"
+  config.vm.network :private_network, ip: "192.168.20.100"
+
+  # Set the name of the VM. See: http://stackoverflow.com/a/17864388/100134
+  config.vm.define :keyboardlist_dev do |keyboardlist_dev|
+  end
+
+  # Ansible provisioner.
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "provision/site.yml"
+    ansible.sudo = true
+    ansible.groups = {
+      "development" => ["keyboardlist_dev"]
+    }
+  end
+
+end
