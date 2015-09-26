@@ -1,7 +1,7 @@
 mongo:
-    image: library/mongo
+    image: mongo
 
-#miner:
-#    build: miner
-#    links:
-#      - mongo
+miner:
+    build: miner
+    links:
+      - mongo
