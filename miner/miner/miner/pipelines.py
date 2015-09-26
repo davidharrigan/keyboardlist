@@ -4,7 +4,6 @@ import logging
 import pymongo
 
 from scrapy.conf import settings
-from scrapy.exceptions import DropItem
 
 logger = logging.getLogger(__name__)
 
@@ -19,7 +18,7 @@ class MongoDBPipeline(object):
         self.db = connection[settings['MONGODB_DB']]
 
     def select_collection(self, spider):
-        if spider.name = 'mechanicalkeyboards.com'
+        if spider.name == 'mechanicalkeyboards.com':
             self.collection = self.db['mechanicalkeyboards']
         else:
             raise Exception("Pipeline not implemented for {}".format(spider.name))

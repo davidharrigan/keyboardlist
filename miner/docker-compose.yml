@@ -5,3 +5,5 @@ miner:
     build: miner
     links:
       - mongo
+    volumes:
+      - "./miner/:/miner/"
