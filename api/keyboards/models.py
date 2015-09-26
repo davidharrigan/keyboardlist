@@ -21,7 +21,7 @@ class Keyboard(models.Model):
         ('other', 'Other')
     )
 
-    name = models.CharField(max_length=255)
+    model = models.CharField(max_length=255)
     switch_type = models.CharField(max_length=255, choices=SWITCH_TYPES)
     size = models.CharField(max_length=255, choices=KEYBOARD_SIZES)
     led = models.BooleanField(default=False)
