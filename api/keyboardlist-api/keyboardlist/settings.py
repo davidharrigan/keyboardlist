@@ -30,6 +30,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+
+    'keyboards',
+    'sellers',
+    'ingestion'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -47,13 +53,14 @@ ROOT_URLCONF = 'keyboardlist.urls'
 WSGI_APPLICATION = 'keyboardlist.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'keyboardlist_api',
+        'USER': 'keyboardlist_api_user',
+        'PASSWORD': 'changeme',  # TODO: change this password
+        'HOST': 'api_postgres_1',
+        'PORT': '',
     }
 }
 
