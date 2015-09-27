@@ -1,6 +1,10 @@
 postgres:
+    container_name: keyboardlist_db
     restart: always
-    image: postgres
+    image: postgres:9.3
+    environment:
+      - POSTGRES_PASSWORD=changeme
+      - POSTGRES_USER=keyboardlist_api
 
 nginx:
     restart: always

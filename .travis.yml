@@ -1,0 +1,10 @@
+language: python
+python:
+  - "3.4"
+before_install:
+  - cd api/keyboardlist-api
+install:
+  - pip install -r requirements.txt
+script:
+  - pep8 --exclude=migrations --ignore=E501 .
+  - python manage.py test

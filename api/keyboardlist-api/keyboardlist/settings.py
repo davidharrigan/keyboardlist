@@ -1,9 +1,8 @@
 """
 Django settings for keyboardlist project.
 """
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -57,12 +56,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'keyboardlist_api',
-        'USER': 'keyboardlist_api_user',
+        'USER': 'keyboardlist_api',
         'PASSWORD': 'changeme',  # TODO: change this password
-        'HOST': 'api_postgres_1',
-        'PORT': '',
+        'HOST': 'keyboardlist_db',
+        'PORT': '5432'
     }
 }
+if 'test' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
