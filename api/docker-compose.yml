@@ -1,0 +1,19 @@
+postgres:
+    restart: always
+    image: postgres
+
+nginx:
+    restart: always
+    build: keyboardlist-api-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+
+keyboardlist-api:
+    restart: always
+    build: keyboardlist-api
+    links:
+      - nginx
+      - postgres
+    volumes:
+      - "./keyboardlist-api/:/usr/src/app"
