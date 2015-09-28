@@ -1,0 +1,7 @@
+[run]
+omit =
+    conf/*,
+    __pycache__,
+    *__init__.*,
+    *migrations*,
+    keyboardlist/settings.py
