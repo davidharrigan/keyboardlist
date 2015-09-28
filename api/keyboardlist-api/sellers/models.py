@@ -7,6 +7,9 @@ class Seller(models.Model):
     name = models.CharField(max_length=255)
     domain = models.URLField()
 
+    def __str__(self):
+        return self.name
+
 
 class KeyboardInventory(models.Model):
     STOCK = (
