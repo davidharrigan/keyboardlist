@@ -33,6 +33,8 @@ class Manufacturer(models.Model):
 
 
 class KeyboardQuerySet(models.query.QuerySet):
+    """ Custom queryset for Keyboard model """
+
     def get_or_create(self, defaults=None, normalize=None, **kwargs):
         """
         Overridden get_or_create to accept normalize argument.  Values stored in normalize

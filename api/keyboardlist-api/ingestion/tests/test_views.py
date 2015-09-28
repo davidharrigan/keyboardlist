@@ -12,6 +12,7 @@ class DataIngestionTests(APITestCase):
         'keyboard_size': 'Tenkeyless',
         'seller_name': 'Backstreet Boys',
         'seller_url': 'http://forthehomies.org',
+        'seller_price': '$50.01',
         'seller_in_stock': '5+'
     }
 

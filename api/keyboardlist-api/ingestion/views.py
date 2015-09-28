@@ -17,7 +17,6 @@ class DataIngestionView(APIView):
 
     TODO: authentication
     """
-
     def post(self, request, format=None):
         serializer = DataIngestionSerializer(data=request.data)
         if not serializer.is_valid():
@@ -44,5 +43,17 @@ class DataIngestionView(APIView):
                 'model': data['keyboard_model']
             }
         )
-        # seller =
-        logger.info('Manufacturer: {} | Seller: {} | Keyboard: {}'.format(manufacturer, seller, keyboard))
+        keyboard_inventory = KeyboardInventory.objects.update_or_create(
+            url=data['seller_url'],
+            normalize={
+                'price': data['seller_price'],
+                'stock': data['seller_in_stock']
+            },
+            defaults={
+                'switch_type': data['keyboard_switch_type'],
+                'keyboard': keyboard[0],
+                'seller': seller[0]
+            }
+        )
+        logger.info('Manufacturer: {} | Seller: {} | Keyboard: {} | Inventory: {}'.format(
+            manufacturer, seller, keyboard, keyboard_inventory))
