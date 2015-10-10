@@ -16,8 +16,8 @@ export_all: export_mk
 
 # Start mining mechanicalkeyboards.com
 mine_mk:
-	cd miner && docker-compose run --rm miner mine mechanicalkeyboards
+	cd miner && docker-compose run --rm miner mine mechanicalkeyboards.com
 
 # Export data from mechanicalkeyboards.com
 export_mk:
-	cd miner && docker-compose run --rm miner export_data mechanicalkeyboards.com
+	cd miner && docker-compose run --rm miner export_data mechanicalkeyboards
