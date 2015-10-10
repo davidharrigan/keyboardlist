@@ -10,7 +10,8 @@ SWITCH_TYPES = (
     ('alps', 'ALPS'),
     ('buckling_spring', 'Buckling Spring'),
     ('cherry', 'Cherry MX'),
-    ('kalih', 'Kalih'),
+    ('kailh', 'Kailh'),
+    ('matias', 'Matias'),
     ('other', 'Other'),
 )
 KEYBOARD_SIZES = (

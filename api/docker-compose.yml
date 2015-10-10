@@ -5,6 +5,8 @@ postgres:
     environment:
       - POSTGRES_PASSWORD=changeme
       - POSTGRES_USER=keyboardlist_api
+    ports:
+      - "5432:5432"
 
 nginx:
     restart: always

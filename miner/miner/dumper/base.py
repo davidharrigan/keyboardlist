@@ -34,7 +34,7 @@ class Dumper(object):
             'seller_name': kwargs['seller'],
             'seller_price': kwargs['price'],
             'seller_url': kwargs['url'],
-            'seller_in_stock': kwargs['stock'],
+            'seller_in_stock': kwargs['stock'] or 'Out of Stock',
         }
         response = self.session.post(self.api, json=data, verify=False)
         logger.info('Response: {}'.format(response))
