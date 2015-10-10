@@ -1,0 +1,40 @@
+import logging
+import sys
+
+import pymongo
+import requests
+
+from miner import settings
+
+# Log configuration
+root = logging.getLogger()
+root.setLevel(logging.DEBUG)
+ch = logging.StreamHandler(sys.stdout)
+ch.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+ch.setFormatter(formatter)
+root.addHandler(ch)
+
+logger = logging.getLogger(__name__)
+
+
+class Dumper(object):
+    api = 'http://192.168.99.100/ingestion/'
+    client = pymongo.MongoClient(settings.MONGODB_SERVER, settings.MONGODB_PORT)
+    db = client[settings.MONGODB_DB]
+    session = requests.Session()
+
+    def send(self, **kwargs):
+        data = {
+            'manufacturer': kwargs['manufacturer'],
+            'keyboard_model': kwargs['model'],
+            'keyboard_switch_type': kwargs['switch_type'],
+            'keyboard_size': kwargs['size'],
+            'keyboard_led': kwargs['led'],
+            'seller_name': kwargs['seller'],
+            'seller_price': kwargs['price'],
+            'seller_url': kwargs['url'],
+            'seller_in_stock': kwargs['stock'],
+        }
+        response = self.session.post(self.api, json=data, verify=False)
+        logger.info('Response: {}'.format(response))

@@ -5,7 +5,11 @@ cmd=$1
 params=${@:2}
 
 function mine {
-  cd /miner && ls -la && scrapy crawl $@
+  cd /miner && scrapy crawl $@
+}
+
+function dump {
+  cd /miner && python -m dumper.$@
 }
 
 case "$cmd" in
@@ -13,15 +17,9 @@ case "$cmd" in
     mine $params
     ;;
   export_data)
-    echo "Not Implemented"
-    ;;
-  help)
-    man ./miner_man
+    dump $params
     ;;
   *)
     echo "Unknown command: $cmd."
-    echo "try help command to list available commands"
     ;;
 esac
-
-exec "$@"

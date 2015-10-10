@@ -16,21 +16,21 @@ class MechanicalKeyboardSpider(Spider):
         'Model': 'model',
 
         # Specs
-        'Switch Type': 'switch_type',
+        'Switch': 'switch_type',
         'USB Key Rollover': 'usb_key_rollover',
         'PS/2 Key Rollover': 'ps2_key_rollover',
-        'Backlit': 'backlit_led',
-        'Special Key LEDs': 'special_key_led',
+        'Primary LED Color': 'backlit_led',
+        'Special LED Color': 'special_key_led',
         'Multimedia Keys': 'multimedia_keys',
-        'Built-in USB Ports': 'built_in_usb_ports',
-        'Built-in Audio Port': 'built_in_audio_port',
-        'Built-in Mic Port': 'built_in_mic_port',
-        'Key Cap Plastic': 'keycap_plastic',
-        'Key Print Method': 'key_print_method',
-        'Key Cap Color': 'keycap_color',
-        'Key Print Position': 'key_print_position',
-        'Key Print Color': 'key_print_color',
-        'Key Print Size': 'key_print_size',
+        'Built in USB Ports': 'built_in_usb_ports',
+        'Built in Audio Port': 'built_in_audio_port',
+        'Built in Mic Port': 'built_in_mic_port',
+        'Keycap Meterial': 'keycap_plastic',
+        'Keycap Print Method': 'key_print_method',
+        'Keycap Color': 'keycap_color',
+        'Keycap Print Position': 'key_print_position',
+        'Keycap Print Color': 'key_print_color',
+        'Keycap Print Size': 'key_print_size',
         'Switch Mount Type': 'switch_mount_type',
         'Dimensions': 'dimensions',
         'Weight': 'weight',
@@ -64,8 +64,9 @@ class MechanicalKeyboardSpider(Spider):
 
     def extract_specs(self, response):
         extracted_specs = {}
-        spec_table_row = '//*[@class="spec_table"]/tr'
+        spec_table_row = '//table[@class="dands"]/tr'
         specs = Selector(response).xpath(spec_table_row)
+        self.logger.info(specs)
         for spec in specs:
             row = spec.xpath('td/text()').extract()
             if not row:
