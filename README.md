@@ -15,9 +15,18 @@ make restart
 
 # DB migration
 make migrate
+
+# Collect static
+make collect_static
+
+# Rebuild API containers
+make rebuild
 ```
 
 **miner**
+There's a good chance this will be broken at some point (whenever mechanicalkeyboards.com
+decides to update their site).  This will be replaced sometime with list of keyboards
+to dump straight into the database. We'll use updater to update inventory and prices.
 ```
 # Start mining all sites (currently only mechanicalkeyboards.com
 mine_all
@@ -26,9 +35,19 @@ mine_all
 export_all
 ```
 
+### Get started
+```
+# Clone the repo
+git clone git@github.com:davidharrigan/keyboardlist.git
+
+# Build containers, migrate DB, collect static, mine keyboard websites, ingest data
+make init
+```
+
 ## TODOs
 - less hard-coded stuff for automation
-- static file management
+- ~~static file management~~
 - unittests for api endpoints
 - frontend automation
+- basic ui
 - inventory updater

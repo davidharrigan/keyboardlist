@@ -1,6 +1,5 @@
 all: init
-init: up migrate mine_all export_all
-
+init: up migrate collect_static mine_all export_all
 
 # -------------------------
 # API Development Commands
@@ -11,10 +10,16 @@ up:
 restart:
 	# Restart API process
 	./scripts/restart-api.sh
+collect_static:
+	# Collect static files
+	./scripts/django-collect-static.sh
 migrate:
 	# Migrate API DB
 	cd api && docker-compose run --rm keyboardlist-api python manage.py migrate; \
 	docker-compose run --rm keyboardlist-api python manage.py makemigrations
+rebuild:
+	# Rebuild API containers
+	./scripts/rebuild-api.sh
 
 
 # ---------------------------
