@@ -17,6 +17,12 @@ keyboardlist-api:
       - "./keyboardlist-api/:/usr/src/app"
       - "/static"
 
+keyboardlist-ui:
+    build: keyboardlist-ui
+    volumes:
+      - "./keyboardlist-ui/:/usr/src/app"
+      - "/dist"
+
 nginx:
     restart: always
     build: keyboardlist-api-nginx
@@ -27,4 +33,5 @@ nginx:
       - keyboardlist-api
     volumes_from:
       - keyboardlist-api
+      - keyboardlist-ui
 
