@@ -50,4 +50,5 @@ make init
 - unittests for api endpoints
 - frontend automation
 - basic ui
+- secret management
 - inventory updater
