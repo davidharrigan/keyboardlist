@@ -31,3 +31,4 @@ export_all
 - static file management
 - unittests for api endpoints
 - frontend automation
+- inventory updater

@@ -105,3 +105,7 @@ USE_TZ = True
 
 # Static files
 STATIC_URL = '/static/'
+STATICFILES_DIR = (
+    '/static/'
+)
+STATIC_ROOT = '/static/'

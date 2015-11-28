@@ -8,18 +8,23 @@ postgres:
     ports:
       - "5432:5432"
 
+keyboardlist-api:
+    restart: always
+    build: keyboardlist-api
+    links:
+      - postgres
+    volumes:
+      - "./keyboardlist-api/:/usr/src/app"
+      - "/static"
+
 nginx:
     restart: always
     build: keyboardlist-api-nginx
     ports:
       - "80:80"
       - "443:443"
-
-keyboardlist-api:
-    restart: always
-    build: keyboardlist-api
     links:
-      - nginx
-      - postgres
-    volumes:
-      - "./keyboardlist-api/:/usr/src/app"
+      - keyboardlist-api
+    volumes_from:
+      - keyboardlist-api
+
