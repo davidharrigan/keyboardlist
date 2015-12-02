@@ -17,7 +17,7 @@ root.addHandler(ch)
 
 logger = logging.getLogger(__name__)
 
-api_host = 'keyboardlist-dev.com'
+api_host = 'api_nginx_1'
 
 
 class Dumper(object):

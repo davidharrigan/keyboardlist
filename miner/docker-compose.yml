@@ -9,3 +9,5 @@ miner:
       - mongo
     volumes:
       - "./miner/:/miner/"
+    external_links:
+      - api_nginx_1
