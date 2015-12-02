@@ -5,11 +5,6 @@
 ## Development
 Dependencies: docker, docker-compose
 
-**update your /etc/hosts**
-```
-YOUR_DOCKER_HOST_IP keyboardlist-dev.com
-```
-
 **keyboardlist API**
 ```
 # Bring up API environment
@@ -42,11 +37,17 @@ export_all
 
 ### Get started
 ```
+# Update your /etc/hosts
+YOUR_DOCKER_HOST_IP keyboardlist-dev.com
+
 # Clone the repo
 git clone git@github.com:davidharrigan/keyboardlist.git
 
 # Build containers, migrate DB, collect static, mine keyboard websites, ingest data
 make init
+
+# Browse keyboardlist api at
+http://keyboardlist-dev.com/api/
 ```
 
 ## TODOs
