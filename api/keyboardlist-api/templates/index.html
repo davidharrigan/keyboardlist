@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="keyboardlist">
     <head>
         <title>keyboard list</title>
         <base href="/">
@@ -7,6 +7,12 @@
     </head>
 
     <body>
+        <div class="main-wrapper">
+        {% include 'navbar.html' %}
+            <div class="content-wrapper">
+                <div class="content" ng-view></div>
+            </div>
+        </div>
     </body>
     {% include 'javascript.html' %}
 </html>

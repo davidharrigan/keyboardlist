@@ -7,7 +7,7 @@
     },
     "less": {
       "style.css": [
-
+        "less/main.less"
       ]
     }
   }

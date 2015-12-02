@@ -20,6 +20,9 @@ migrate:
 rebuild:
 	# Rebuild API containers
 	./scripts/rebuild-api.sh
+watch:
+	# Gulp watch
+	./scripts/gulp-watch.sh
 
 
 # ---------------------------

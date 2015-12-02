@@ -1,8 +1,8 @@
 FROM node
 
 # Set some envvars
-ENV DIST_DIR /dist
 ENV WORKDIR /usr/src/app
+ENV DIST_DIR /usr/src/app/dist
 
 # Create our workdir
 RUN mkdir -p $WORKDIR

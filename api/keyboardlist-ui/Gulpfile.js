@@ -15,8 +15,8 @@ var config = path.join(app_dir, 'gulp_config.json');
 var files = require(path.resolve(config));
 
 // Vendor files
-var vendors = ['node_modules/angular/**/*'];
-var vendor_dist = path.resolve(path.join(work_dir, 'lib'));
+var vendors = ['node_modules/angular/**/*.*', 'node_modules/uikit/**/*.*'];
+var vendor_dist = path.resolve(path.join(app_dir, 'lib'));
 
 // ============================================================================
 // Build JS
@@ -72,9 +72,20 @@ gulp.task('build-css', function() {
 // Copy vendor files
 // ============================================================================
 gulp.task('copy-vendor', function() {
-  gulp.src(vendors)
+  gulp.src(vendors, { base: './node_modules'})
     .pipe(gulp.dest(vendor_dist));
+});
+
+// ============================================================================
+// Watch
+// ============================================================================
+gulp.task('watch', function() {
+  var js = app_dir + '**/*.js';
+  var less = app_dir + '**/*.less';
+  gulp.watch([js], {interval: 1000, usePoll: true}, ['build-js']);
+  gulp.watch([less], {interval: 1000, usePoll: true}, ['build-css']);
 });
 
 
 gulp.task('default', ['copy-vendor', 'build-js', 'build-css']);
+gulp.task('dev', ['default', 'watch']);
