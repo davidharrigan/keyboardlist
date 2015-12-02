@@ -5,6 +5,11 @@
 ## Development
 Dependencies: docker, docker-compose
 
+**update your /etc/hosts**
+```
+YOUR_DOCKER_HOST_IP keyboardlist-dev.com
+```
+
 **keyboardlist API**
 ```
 # Bring up API environment
@@ -45,7 +50,7 @@ make init
 ```
 
 ## TODOs
-- less hard-coded stuff for automation
+- ~~less hard-coded stuff for automation~~
 - ~~static file management~~
 - unittests for api endpoints
 - frontend automation

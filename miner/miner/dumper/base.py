@@ -17,9 +17,11 @@ root.addHandler(ch)
 
 logger = logging.getLogger(__name__)
 
+api_host = 'keyboardlist-dev.com'
+
 
 class Dumper(object):
-    api = 'http://192.168.99.100/ingestion/'
+    api = 'http://{}/ingestion/'.format(api_host)
     client = pymongo.MongoClient(settings.MONGODB_SERVER, settings.MONGODB_PORT)
     db = client[settings.MONGODB_DB]
     session = requests.Session()
