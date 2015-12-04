@@ -18,6 +18,7 @@
   "homepage": "https://github.com/davidharrigan/keyboardlist#readme",
   "dependencies": {
     "angular": "^1.4.8",
+    "angular-route": "^1.4.8",
     "gulp": "^3.9.0",
     "gulp-less": "^3.0.1",
     "gulp-filter": "^2.0.2",

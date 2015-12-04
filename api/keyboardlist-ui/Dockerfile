@@ -11,5 +11,4 @@ WORKDIR $WORKDIR
 # Copy files and install deps
 COPY . ./
 RUN npm install
-
-ENTRYPOINT ["./bin/build.sh"]
+RUN node_modules/gulp/bin/gulp.js

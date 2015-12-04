@@ -9,13 +9,12 @@ var dist_dir = process.env.DIST_DIR || './dist';
 var work_dir = process.env.WORKDIR || '.';
 
 // Our front-end apps, relative to work_dir (only one for now)
-// var apps = ['app'];
 var app_dir = path.join(work_dir, 'app');
 var config = path.join(app_dir, 'gulp_config.json');
 var files = require(path.resolve(config));
 
 // Vendor files
-var vendors = ['node_modules/angular/**/*.*', 'node_modules/uikit/**/*.*'];
+var vendors = ['angular', 'angular-route', 'uikit'];
 var vendor_dist = path.resolve(path.join(app_dir, 'lib'));
 
 // ============================================================================
@@ -72,7 +71,10 @@ gulp.task('build-css', function() {
 // Copy vendor files
 // ============================================================================
 gulp.task('copy-vendor', function() {
-  gulp.src(vendors, { base: './node_modules'})
+  var vendor_files = vendors.map(function(vendor) {
+    return path.join('node_modules', vendor, '**/*.*');
+  });
+  gulp.src(vendor_files, { base: './node_modules'})
     .pipe(gulp.dest(vendor_dist));
 });
 
@@ -82,8 +84,8 @@ gulp.task('copy-vendor', function() {
 gulp.task('watch', function() {
   var js = app_dir + '**/*.js';
   var less = app_dir + '**/*.less';
-  gulp.watch([js], {interval: 1000, usePoll: true}, ['build-js']);
-  gulp.watch([less], {interval: 1000, usePoll: true}, ['build-css']);
+  gulp.watch([js], ['build-js']);
+  gulp.watch([less], ['build-css']);
 });
 
 
