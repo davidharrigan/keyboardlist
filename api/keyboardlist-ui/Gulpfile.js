@@ -15,7 +15,7 @@ var files = require(path.resolve(config));
 
 // Vendor files
 var vendors = ['angular', 'angular-route', 'uikit'];
-var vendor_dist = path.resolve(path.join(app_dir, 'lib'));
+var vendor_dist = path.resolve(path.join(dist_dir, 'lib'));
 
 // ============================================================================
 // Build JS
@@ -31,6 +31,7 @@ gulp.task('build-js', function() {
     var dist = key;
     var stream = gulp.src(src)
       .pipe($.sourcemaps.init())
+      .pipe($.ngAnnotate())
       .pipe($.concat(dist))
         // Only rename and uglify if gulp is ran with --type production
         // .pipe($.util.env.type == 'production' ? $.rename({suffix: ".min"}) : $util.noop())
@@ -79,15 +80,26 @@ gulp.task('copy-vendor', function() {
 });
 
 // ============================================================================
+// Copy partials
+// ============================================================================
+gulp.task('copy-partials', function() {
+  var partials_dir = path.join(app_dir, 'partials/**/*.*');
+  var partials_dist = path.join(dist_dir, 'partials');
+  gulp.src(partials_dir).pipe(gulp.dest(partials_dist));
+});
+
+// ============================================================================
 // Watch
 // ============================================================================
 gulp.task('watch', function() {
-  var js = app_dir + '**/*.js';
-  var less = app_dir + '**/*.less';
+  var js = app_dir + '/**/*.js';
+  var less = app_dir + '/**/*.less';
+  var partials = app_dir + '/**/*.html';
   gulp.watch([js], ['build-js']);
   gulp.watch([less], ['build-css']);
+  gulp.watch([partials], ['copy-partials']);
 });
 
 
-gulp.task('default', ['copy-vendor', 'build-js', 'build-css']);
+gulp.task('default', ['copy-vendor', 'copy-partials', 'build-js', 'build-css']);
 gulp.task('dev', ['default', 'watch']);

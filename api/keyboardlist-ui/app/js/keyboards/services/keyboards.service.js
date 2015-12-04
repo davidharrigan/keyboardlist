@@ -4,8 +4,21 @@
   // Initialize module and inject dependencies
   angular
     .module('keyboardlist.keyboards.services')
-    .factory('Keyboard', Keyboard);
+    .factory('Keyboards', Keyboards);
 
-  function Keyboard() {
+  var apiRoute = '/api/keyboards/';
+
+  function Keyboards($http) {
+
+    // Factory to be returned
+    var Keyboards = {
+      get: get
+    };
+    return Keyboards;
+
+    // Call GET on the api endpoint
+    function get() {
+      return $http.get(apiRoute);
+    }
   }
 })();

@@ -7,8 +7,7 @@
     'keyboardlist.keyboards'
   ]);
 
-  angular.module('keyboards').run(run);
-  run.$inject = ['$http'];
+  angular.module('keyboardlist').run(run);
 
   function run($http) {
     $http.defaults.xsrfHeaderName = 'X-CSRFToken';

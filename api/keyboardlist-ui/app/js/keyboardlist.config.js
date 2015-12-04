@@ -3,8 +3,7 @@
 
   angular.module('keyboardlist.config', []);
 
-  angular.module.config(config);
-  config.$inject = ['$locationProvider'];
+  angular.module('keyboardlist.config').config(config);
 
   // Enable HTML5 Routing
   function config($locationProvider) {

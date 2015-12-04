@@ -2,10 +2,10 @@
   "src": {
     "js": {
       "main.js": [
-        "js/keyboardlist.js",
+        "js/**/*.js",
         "js/keyboardlist.config.js",
         "js/keyboardlist.routes.js",
-        "js/**/*.js"
+        "js/keyboardlist.js"
       ]
     },
     "less": {
