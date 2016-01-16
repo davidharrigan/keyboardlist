@@ -21,6 +21,12 @@ rebuild:
 	# Rebuild API containers
 	./scripts/rebuild-api.sh
 
+# -------------------------
+# UI Development Commands
+# -------------------------
+watch:
+	cd api/keyboardlist-ui && gulp watch
+
 # ---------------------------
 # Miner Development Commands
 # ---------------------------

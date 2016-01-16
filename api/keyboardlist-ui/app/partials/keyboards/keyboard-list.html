@@ -1,13 +1,18 @@
-<div ng-repeat="keyboard in vm.keyboards">
-    <dl class="uk-description-list-horizontal">
-        <dt>Model</dt>
-        <dd ng-bind="keyboard.model"></dd>
-        <dt>Switch Type</dt>
-        <dd ng-bind="keyboard.switch_type"></dd>
-        <dt>Size</dt>
-        <dd ng-bind="keyboard.size"></dd>
-        <dt>LED</dt>
-        <dd ng-bind="keyboard.led"></dd>
-    </dl>
-    <hr>
-</div>
+<table class="uk-table uk-table-striped uk-table-hover">
+    <thead>
+        <tr>
+            <th class="uk-text-center">Model</th>
+            <th class="uk-text-center">Switch Type</th>
+            <th class="uk-text-center">Size</th>
+            <th class="uk-text-center">LED</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="keyboard in vm.keyboards">
+            <td><a href="#" ng-bind="keyboard.model"></a></td>
+            <td ng-bind="keyboard.switch_type"></td>
+            <td ng-bind="keyboard.size"></td>
+            <td ng-bind="keyboard.led"></td>
+        </tr>
+    </tbody>
+</table>

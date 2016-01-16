@@ -1,1 +1,36 @@
 @import "../lib/uikit/src/less/uikit.less";
+
+@color1: #292830;
+@color2: #a7a7a7;
+@color3: #d7dbde;
+@color4: #465d6b;
+
+body {
+}
+
+.main-navbar > .uk-navbar {
+  padding: 20px 40px;
+  margin-bottom: 10px;
+  background-color: @color1;
+  color: @color2;
+}
+
+.content-wrapper {
+  padding: 40px;
+}
+
+@table-border-color: #e0e0e0;
+// List
+.uk-table > thead > tr {
+  border-bottom: solid @table-border-color 2pt;
+}
+.uk-table > thead > tr > th:not(:last-child) {
+  border-right: solid @table-border-color 1pt;
+}
+
+.uk-table > tbody > tr {
+  border-bottom: solid @table-border-color 1pt;
+  & > td {
+    padding: 10pt;
+  }
+}
