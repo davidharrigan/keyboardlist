@@ -15,6 +15,7 @@ keyboardlist-api:
       - postgres
     volumes:
       - "./keyboardlist-api/:/usr/src/app"
+      - "./keyboardlist-api/logs/:/usr/src/logs/"
       - "/static"
 
 keyboardlist-ui:

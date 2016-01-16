@@ -77,7 +77,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'simple': {
-            'format': '%(levelname)s %(message)s'
+            'format': '[%(levelname)s] <%(asctime)s> %(pathname)s %(module)s.%(funcName)s[%(lineno)d] :: %(message)s'
         }
     },
     'handlers': {
@@ -85,11 +85,16 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
-        }
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/usr/src/logs/debug.log',
+        },
     },
     'loggers': {
         'keyboardlist': {
-            'handlers': ['console'],
+            'handlers': ['console', 'file'],
             'level': 'DEBUG'
         }
     }
@@ -113,3 +118,8 @@ STATIC_ROOT = '/static/'
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 100
+}
